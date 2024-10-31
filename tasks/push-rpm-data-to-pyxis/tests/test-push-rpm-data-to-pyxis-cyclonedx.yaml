@@ -25,7 +25,8 @@ spec:
               #!/usr/bin/env sh
               set -eux
 
-              cat > $(workspaces.data.path)/pyxis_data.json << EOF
+              mkdir "$(workspaces.data.path)/testdir"
+              cat > "$(workspaces.data.path)/testdir/pyxis_data.json" << EOF
               {
                 "components": [
                   {
@@ -60,7 +61,7 @@ spec:
         name: push-rpm-data-to-pyxis
       params:
         - name: pyxisJsonPath
-          value: pyxis_data.json
+          value: testdir/pyxis_data.json
         - name: pyxisSecret
           value: test-push-rpm-data-to-pyxis-cert
         - name: server
